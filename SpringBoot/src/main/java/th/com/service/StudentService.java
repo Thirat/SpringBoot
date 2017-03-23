@@ -3,12 +3,14 @@ package th.com.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import th.com.dao.StudentDao;
 import th.com.entity.Student;
 
 @Service
+@Qualifier("Hibernate")
 public class StudentService {
 	
 	@Autowired

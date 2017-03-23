@@ -7,18 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import th.com.entity.Student;
 
 @Repository
+@Qualifier("Hibernate")
 public class HibernateStudentDaoImpl implements StudentDao{
 
 	private static SessionFactory factory;
 	
 	static{
 	    try{
-	        factory = new Configuration().configure().buildSessionFactory();
+	        factory = new Configuration().configure("/resource/hibernate.cfg.xml").buildSessionFactory();
 	     }catch (Throwable ex) { 
 	        System.err.println("Failed to create sessionFactory object." + ex);
 	        throw new ExceptionInInitializerError(ex); 

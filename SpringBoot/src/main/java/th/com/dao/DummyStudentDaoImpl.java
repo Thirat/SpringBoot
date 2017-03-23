@@ -4,11 +4,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import th.com.entity.Student;
 
 @Repository
+//@Qualifier("dummy")
+@Primary
 public class DummyStudentDaoImpl implements StudentDao {
 	
 	private static Map<Integer,Student> studentList;
