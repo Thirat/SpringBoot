@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +37,15 @@ public class StudentController {
 	@RequestMapping(method = RequestMethod.GET)
 	Collection<Student> getAllStudent(){
 		return studentService.getAllStudent();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public Student getStudentById(@PathVariable("id") Integer id){
+		return studentService.getStudentById(id);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void deleteStudentById(@PathVariable("id") Integer id){
+		studentService.deleteStudentById(id);
 	}
 }

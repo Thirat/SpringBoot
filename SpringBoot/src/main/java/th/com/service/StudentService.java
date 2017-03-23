@@ -29,4 +29,12 @@ public class StudentService {
 	public Collection<Student> getAllStudent(){
 		return studentdao.getAllStudent();
 	}
+	
+	public Student getStudentById(Integer id){
+		return studentdao.getStudentById(id);
+	}
+	
+	public void deleteStudentById(Integer id){
+		studentdao.deleteStudentById(id);
+	}
 }
