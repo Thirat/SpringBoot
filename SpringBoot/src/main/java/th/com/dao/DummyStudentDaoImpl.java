@@ -16,6 +16,8 @@ public class DummyStudentDaoImpl implements StudentDao {
 	static {
 		studentList = new HashMap<Integer, Student>();
 		studentList.put(1, new Student(1,"Thirat",20));
+		studentList.put(2, new Student(2,"Ping",25));
+		studentList.put(3, new Student(3,"Chin",30));
 	}
 
 	public Collection<Student> getAllStudent() {
@@ -34,7 +36,7 @@ public class DummyStudentDaoImpl implements StudentDao {
 		if(studentList.containsKey(student.getId())){
 			studentList.remove(student.getId());
 		}else{
-			System.out.println("Not contain ket : " + student.getId());
+			System.out.println("Not contain key : " + student.getId());
 		}
 	}
 
@@ -44,7 +46,7 @@ public class DummyStudentDaoImpl implements StudentDao {
 			s.setName(student.getName());
 			s.setAge(student.getAge());
 		}else{
-			System.out.println("Not contain ket : " + student.getId());
+			System.out.println("Not contain key : " + student.getId());
 		}
 	}
 
