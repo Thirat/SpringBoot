@@ -14,6 +14,7 @@ import th.com.entity.Student;
 public class StudentService {
 	
 	@Autowired
+	@Qualifier("Hibernate")
 	private StudentDao studentdao;
 	
 	public void insertStudent(Student student){

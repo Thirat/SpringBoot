@@ -3,8 +3,10 @@ package th.com.dao;
 
 import java.util.Collection;
 
-import th.com.entity.Student;
+import javax.transaction.Transactional;
 
+import th.com.entity.Student;
+@Transactional
 public interface StudentDao {
 	
 	Collection<Student> getAllStudent();

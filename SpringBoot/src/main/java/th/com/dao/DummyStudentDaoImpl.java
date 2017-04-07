@@ -11,8 +11,7 @@ import org.springframework.stereotype.Repository;
 import th.com.entity.Student;
 
 @Repository
-//@Qualifier("dummy")
-@Primary
+@Qualifier("dummy")
 public class DummyStudentDaoImpl implements StudentDao {
 	
 	private static Map<Integer,Student> studentList;
