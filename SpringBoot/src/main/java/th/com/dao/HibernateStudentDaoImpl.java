@@ -48,13 +48,12 @@ public class HibernateStudentDaoImpl implements StudentDao{
 
 	public void insertStudent(Student student) {
 		System.out.println("call insertStudent from hibernate");
+		System.out.println(student.toString());
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
-			System.out.print(student.getId());
 			Integer studentId = (Integer) session.save(student);
-			System.out.println("print sth : " + studentId);
 			tx.commit();
 		}catch(HibernateException e){
 			e.printStackTrace();
@@ -70,6 +69,8 @@ public class HibernateStudentDaoImpl implements StudentDao{
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
+			Student studentOld = (Student) session.get(Student.class, student.getId());
+			session.delete(studentOld);
 			tx.commit();
 		}catch(HibernateException e){
 			e.printStackTrace();
@@ -81,16 +82,52 @@ public class HibernateStudentDaoImpl implements StudentDao{
 
 	public void updateStudent(Student student) {
 		System.out.println("call updateStudent from hibernate");
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			Student studentOld = (Student) session.get(Student.class, student.getId());
+			session.update(studentOld);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
 		
 	}
 
 	public Student getStudentById(Integer id) {
 		System.out.println("call getStudentById from hibernate");
-		return null;
+		Session session = factory.openSession();
+		Student student = null;
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			student = (Student) session.get(Student.class, id);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return student;
 	}
 
 	public void deleteStudentById(Integer id) {
 		System.out.println("call deleteStudentById from hibernate");
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try{
+			tx = session.beginTransaction();
+			Student student = (Student)session.get(Student.class, id);
+			session.delete(student);
+			tx.commit();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
 		
 	}
 
