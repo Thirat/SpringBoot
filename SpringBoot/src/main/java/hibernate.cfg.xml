@@ -23,7 +23,9 @@
    </property>
 
    <!-- List of XML mapping files -->
-   <mapping resource="Student.hbm.xml"/>
-
+   <!--  this is XML style-->
+   <!--    <mapping resource="Student.hbm.xml"/> -->
+   <!-- this is annotation style -->
+	<mapping class = "th.com.entity.Student"/>
 </session-factory>
 </hibernate-configuration>
